@@ -104,7 +104,7 @@ function calculateResult() {
   document.getElementById("cloudMist").innerHTML = `<b>Cloud Mist:</b> ${winnerData.mist.join(", ")}`;
 
   // Build rolling table
-  let tableHTML = `
+  let tableHTML = `<table class="rolling-table">
     <tr>
         <th>SKU</th>
         <th>Rolling %</th>
@@ -132,6 +132,8 @@ function calculateResult() {
     `;
   });
 
+  tableHTML += `</table>`;
+
   document.getElementById("rollingTable").innerHTML = tableHTML;
 
   document.getElementById("resultBox").style.display = "block";
@@ -155,6 +157,7 @@ function calculateResult() {
   };
 
   document.getElementById("exportBtn").style.display = "block";
+  document.getElementById("googleSheetsBtn").style.display = "block";
 
   Swal.fire({
     icon: "success",
@@ -207,4 +210,50 @@ function exportCSV() {
 
     URL.revokeObjectURL(url);
   });
+}
+
+async function sendToGoogleSheets() {
+  const data = window.quizExportData;
+
+  if (!data) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops!",
+      text: "Finish the quiz first!",
+    });
+    return;
+  }
+
+  // Add timestamp
+  const timestamp = new Date().toLocaleString();
+
+  const payloadData = {
+    ...data,
+    Timestamp: timestamp,
+  };
+
+  try {
+    // Replace with your actual Google Apps Script Web App URL
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxmZcHytVA3jZHFxd_z3smotv9n2BYFXnvdjnUdRuYHt17h4xbLrppitdt7zyrNRUTFlA/exec";
+
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify(payloadData),
+    });
+
+    Swal.fire({
+      icon: "success",
+      title: "Success!",
+      text: "Your result has been sent to Google Sheets.",
+      timer: 2000,
+    });
+  } catch (error) {
+    console.error("Error sending to Google Sheets:", error);
+    Swal.fire({
+      icon: "error",
+      title: "Oops!",
+      text: "Failed to send data. Please try again.",
+    });
+  }
 }
