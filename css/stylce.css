@@ -1,47 +1,103 @@
-body {
-  font-family: "Inter", sans-serif;
-  background: #fafafa;
-  padding: 40px;
-  color: #222;
-  line-height: 1.5;
-}
-
-.quiz-container {
-  max-width: 800px;
-  margin: auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 14px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-}
-
-h1 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.question {
-  margin-bottom: 30px;
-}
-
-.question h3 {
-  margin-bottom: 12px;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-input[type="text"] {
-  padding: 12px;
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  margin-top: 10px;
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+/* GLOBAL */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f0f0f0;
+  padding: 40px 20px;
+  min-height: 100vh;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+/* WRAPPER */
+.quiz-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 60px 80px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* TITLE */
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #1a1a1a;
+}
+
+/* QUESTION BLOCK */
+.question {
+  margin-bottom: 50px;
+}
+
+.question h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+/* OPTIONS (Radio Style Mirip Contoh) */
+label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 12px 0;
+  background: none;
+  margin: 0;
+  border-radius: 0;
+  transition: color 0.2s ease;
+}
+
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+  cursor: pointer;
+  accent-color: #6366f1;
+}
+
+label span {
+  font-size: 15px;
+  color: #4a5568;
+}
+
+label:hover span {
+  color: #1a1a1a;
+}
+
+/* TEXT INPUT (Mirip text-input di contoh) */
+input[type="text"] {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: white;
+  color: #1a1a1a;
+  transition: border-color 0.2s ease;
+  margin-top: 10px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+input[type="text"]::placeholder {
+  color: #a0aec0;
+}
+
+/* TABLE */
 .rolling-table {
   width: 100%;
   margin-top: 15px;
@@ -51,138 +107,78 @@ input[type="text"] {
 
 .rolling-table th,
 .rolling-table td {
-  border: 1px solid #ccc;
+  border: 1px solid #e2e8f0;
   padding: 10px;
   text-align: left;
 }
 
 .rolling-table th {
-  background: #f3f3f3;
+  background: #f7f7f7;
   font-weight: 600;
 }
 
-label {
-  display: block;
-  padding: 12px 14px;
-  margin: 8px 0;
-  background: #f0f0f0;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.2s;
-  font-size: 16px;
-}
-
-input[type="radio"] {
-  margin-right: 10px;
-}
-
-label:hover {
-  background: #e2e2e2;
-}
-
+/* BUTTON (Sama dengan contoh submit-button) */
 button {
-  padding: 14px 26px;
-  background: #111;
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 600;
   color: white;
+  background-color: #1a202c;
   border: none;
-  font-size: 18px;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   margin-top: 20px;
-  width: 100%;
+  transition: background-color 0.2s ease;
 }
 
 button:hover {
-  background: #333;
+  background-color: #2d3748;
 }
 
+button:active {
+  transform: scale(0.98);
+}
+
+/* RESULT BOX (Ikut style clean dari contoh) */
 .result-box {
   margin-top: 40px;
   padding: 30px;
-  background: #fef7ea;
-  border-left: 6px solid #111;
+  background: #fefefe;
+  border-left: 6px solid #1a1a1a;
   border-radius: 10px;
   display: none;
 }
 
 .result-box h2 {
-  margin-bottom: 10px;
   font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.result-box p {
-  font-size: 16px;
-}
-
-/* RESPONSIVE MOBILE (≤ 480px) */
-@media (max-width: 480px) {
-  body {
-    padding: 20px;
-  }
-
-  .quiz-container {
-    padding: 20px;
-    border-radius: 12px;
-  }
-
-  h1 {
-    font-size: 22px;
-  }
-
-  .question h3 {
-    font-size: 18px;
-  }
-
-  label {
-    padding: 10px 12px;
-    font-size: 15px;
-  }
-
-  input[type="text"] {
-    font-size: 15px;
-  }
-
-  button {
-    font-size: 16px;
-    padding: 12px;
-  }
-
-  .result-box {
-    padding: 20px;
-  }
-
-  .result-box h2 {
-    font-size: 20px;
-  }
-}
-
-/* TABLET (481–768px) */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  body {
-    padding: 25px;
-  }
-
   .quiz-container {
-    padding: 22px;
+    padding: 40px 30px;
   }
-
   h1 {
     font-size: 26px;
   }
 }
 
-/* LARGE DESKTOP (≥ 1024px) */
-@media (min-width: 1024px) {
+@media (max-width: 480px) {
+  body {
+    padding: 20px 10px;
+  }
   .quiz-container {
-    padding: 40px;
+    padding: 30px 20px;
   }
-
-  label {
-    font-size: 17px;
+  h1 {
+    font-size: 22px;
   }
-
-  button {
-    width: auto;
-    padding: 14px 40px;
+  .question h3 {
+    font-size: 15px;
+  }
+  label span {
+    font-size: 14px;
   }
 }

@@ -44,7 +44,7 @@ function calculateResult() {
     Swal.fire({
       icon: "warning",
       title: "Ups!",
-      text: "Please answer all required questions (Q1, Q3–Q6).",
+      text: "Please answer all required questions (Q1, Q3 – Q6).",
     });
     return;
   }
