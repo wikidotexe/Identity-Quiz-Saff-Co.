@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SAFF & Co – Quiz 2026</title>
+    <link rel="stylesheet" href="css/stylce.css" />
+  </head>
+  <body>
+    <div class="quiz-container">
+      <h1>SAFF & Co. – Identity Quiz 2026</h1>
+
+      <!-- Q1 -->
+      <div class="question">
+        <h3>Q1: Choose your season identity, go!</h3>
+        <label><input type="radio" name="q1" value="A" />A. Spring</label>
+        <label><input type="radio" name="q1" value="B" />B. Summer</label>
+        <label><input type="radio" name="q1" value="C" />C. Fall</label>
+        <label><input type="radio" name="q1" value="D" />D. Winter</label>
+      </div>
+
+      <!-- Q2 -->
+      <div class="question">
+        <h3>Q2: Pick the first collection you want to try (free input).</h3>
+        <input type="text" id="q2" placeholder="Type your choice..." />
+      </div>
+
+      <!-- Q3 -->
+      <div class="question">
+        <h3>Q3: Thinking about your next destination… it’s 2026!</h3>
+        <label><input type="radio" name="q3" value="A" />A. Somewhere by the sea</label>
+        <label><input type="radio" name="q3" value="B" />B. A long, slow vacation</label>
+        <label><input type="radio" name="q3" value="C" />C. A spontaneous weekend trip</label>
+        <label><input type="radio" name="q3" value="D" />D. Around the city</label>
+      </div>
+
+      <!-- Q4 -->
+      <div class="question">
+        <h3>Q4: Which Cloud Mist suits your personality?</h3>
+        <label><input type="radio" name="q4" value="A" />A. Annabel Lee</label>
+        <label><input type="radio" name="q4" value="B" />B. Remedia Amoris</label>
+        <label><input type="radio" name="q4" value="C" />C. Sonnet 116</label>
+        <label><input type="radio" name="q4" value="D" />D. Träumerei</label>
+        <label><input type="radio" name="q4" value="E" />E. Am Kamin</label>
+      </div>
+
+      <!-- Q5 -->
+      <div class="question">
+        <h3>Q5: Pick your spell for the day!</h3>
+        <label><input type="radio" name="q5" value="A" />A. Heavenly Potion (SOTB)</label>
+        <label><input type="radio" name="q5" value="B" />B. Heavenly Potion (Ostara)</label>
+        <label><input type="radio" name="q5" value="C" />C. Heavenly Potion (Las Pozas)</label>
+        <label><input type="radio" name="q5" value="D" />D. Heavenly Potion (LOUI)</label>
+      </div>
+
+      <!-- Q6 -->
+      <div class="question">
+        <h3>Q6: One word that reminds you of “home”.</h3>
+        <label><input type="radio" name="q6" value="A" />A. Love</label>
+        <label><input type="radio" name="q6" value="B" />B. Joy</label>
+        <label><input type="radio" name="q6" value="C" />C. Warm</label>
+        <label><input type="radio" name="q6" value="D" />D. Safe</label>
+      </div>
+
+      <button onclick="calculateResult()">See Result</button>
+
+      <div class="result-box" id="resultBox">
+        <h2 id="resultTitle"></h2>
+        <p id="resultDesc"></p>
+        <h3>Recommended Collection:</h3>
+        <p id="fullSize"></p>
+        <p id="cloudMist"></p>
+
+        <h3>Rolling Percentage</h3>
+        <table id="rollingTable" class="rolling-table"></table>
+      </div>
+
+      <button id="exportBtn" onclick="exportCSV()" style="margin-top: 30px; background: #0a6; display: none">Export CSV</button>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
